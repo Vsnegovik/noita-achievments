@@ -1,9 +1,6 @@
 <script lang="ts">
   import { pillars } from './model/pillarsStore'
   import type { EPillar } from './types'
-  import { Tooltip, Button } from "flowbite-svelte";
-
-
 
   const onToggleAchievement = (type: string, index: number) => () => {
     if (index > 0) {
@@ -11,9 +8,6 @@
     }
   }
 </script>
-
-<Button id="disable-arrow">Default tooltip</Button>
-<Tooltip arrow={false} triggeredBy="#disable-arrow">Tooltip content</Tooltip>
 
 <div class="pillars">
   {#each Object.entries($pillars) as [type, achievements], groupIndex}
