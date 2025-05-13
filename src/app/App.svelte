@@ -1,13 +1,7 @@
 <script lang="ts">
-
+  import PagePillars from '../pages/Pillars/pillars.svelte'
 </script>
 
 <main>
-
-<h1>Hello</h1>
-
+  <PagePillars />
 </main>
-
-<style>
-
-</style>
