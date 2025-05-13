@@ -76,7 +76,7 @@ export const pillars: Pillars = {
     },
     {
       title: 'Sacrifice Treasure Chest',
-      image: getPart('boss'),
+      image: getPart('crain'),
     },
   ],
   [EPillar.ESSENCES]: [

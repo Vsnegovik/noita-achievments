@@ -30,8 +30,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overscroll-behavior: none;
-  background: url('/src/shared/assets/storm_clouds_01.png') repeat-x, url('/src/shared/assets/parallax_background.png') no-repeat center;
-  background-size: auto, 100% 100%;
+  background:
+    url('/src/shared/assets/storm_clouds_01.png') repeat-x,
+    url('/src/shared/assets/parallax_background.png') no-repeat center;
+  background-size:
+    auto,
+    100% 100%;
 }
 
 h1 {
