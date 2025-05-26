@@ -7,5 +7,5 @@ export enum EPillar {
   SECRETS,
 }
 
-export type Pillar = { title: string; image: string; isUnlocked?: boolean }
-export type Pillars = Record<EPillar, Pillar[]>
+export type Pillar = { id: number; title: string; image: string; isUnlocked?: boolean };
+export type Pillars = Record<EPillar, Pillar[]>;

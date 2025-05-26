@@ -1,25 +1,29 @@
 <script setup lang="ts">
-
-import type { EPillar } from '../types'
 import { pillars } from '@/pages/pillars/config';
+import { usePillarStore } from '@/pages/pillars/model/pillarsStore';
+import type { EPillar } from '@/pages/pillars/types';
+const pillarsStore = usePillarStore();
 
-const onToggleAchievement = (type: string, index: number) => () => {
-  if (index > 0) {
-    // pillars.toggle(type as unknown as EPillar, index)
+const onToggleAchievement = (pillar: EPillar, achievement: number) => {
+  if (pillarsStore[pillar].has(achievement)) {
+    pillarsStore[pillar].delete(achievement);
+  } else {
+    pillarsStore[pillar].add(achievement);
   }
-}
+};
 </script>
 
 <template>
   <div class="pillars">
-    <div class="pillar" v-for="([type, achievements], groupIndex ) in Object.entries(pillars)">
+    <div v-for="(achievements, type) in pillars" :key="type" class="pillar">
       <div
         v-for="(achievement, index) in achievements"
-        :class="{unlocked: achievement.isUnlocked}"
+        :key="index"
+        :class="{ unlocked: pillarsStore[type].has(index) }"
         class="achievement"
         :style="`background-image: url(${achievement.image})`"
         @click="onToggleAchievement(type, index)"
-      ></div>
+      />
     </div>
   </div>
 </template>
@@ -32,8 +36,7 @@ const onToggleAchievement = (type: string, index: number) => () => {
   gap: 0 70px;
   align-items: end;
   background-image:
-    url('/src/shared/assets/tree/0_background.png'),
-    url('/src/shared/assets/tree/4_background.png');
+    url('/src/shared/assets/tree/0_background.png'), url('/src/shared/assets/tree/4_background.png');
   background-size: 50% 50%;
   background-repeat: no-repeat;
   background-position:
@@ -42,29 +45,54 @@ const onToggleAchievement = (type: string, index: number) => () => {
   padding: 0 300px 50px;
 }
 
-.pillar::after,
 .pillar::before,
+.pillar::after,
 .achievement {
   width: var(--size);
   height: var(--size);
-  background-image: url('/src/shared/assets/pillars/pillar_part.png');
   background-size: contain;
+}
+
+.achievement {
+  background-image: url('/src/shared/assets/pillars/pillar_part.png');
   filter: grayscale(1) brightness(1.5);
 }
 
+.pillar::before,
 .pillar::after {
   content: '';
   display: block;
-  background-image: url('/src/shared/assets/pillars/pillar_part_fade.png');
-  filter: grayscale(0) brightness(1.5);
+  filter: brightness(1.5);
 }
 
-.achievement:not(:first-child):hover {
+.pillar::after {
+  background-image: url('/src/shared/assets/pillars/pillar_part_fade.png');
+}
+
+.pillar:nth-child(1)::before {
+  background-image: url('/src/shared/assets/pillars/pillar_end_01.png');
+}
+.pillar:nth-child(2)::before {
+  background-image: url('/src/shared/assets/pillars/pillar_end_03.png');
+}
+.pillar:nth-child(3)::before {
+  background-image: url('/src/shared/assets/pillars/pillar_end_06.png');
+}
+.pillar:nth-child(4)::before {
+  background-image: url('/src/shared/assets/pillars/pillar_end_02.png');
+}
+.pillar:nth-child(5)::before {
+  background-image: url('/src/shared/assets/pillars/pillar_end_05.png');
+}
+.pillar:nth-child(6)::before {
+  background-image: url('/src/shared/assets/pillars/pillar_end_04.png');
+}
+
+.achievement:hover {
   filter: brightness(1.5);
   cursor: pointer;
 }
 
-.achievement:first-child,
 .achievement.unlocked {
   filter: brightness(1.5) !important;
 }

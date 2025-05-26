@@ -4,16 +4,12 @@ import { PagePillars } from '@/pages/pillars';
 export enum ELayoutType {
   DEFAULT,
 }
-const DummyComponent = {
-  name: 'DummyComponent',
-  render: () => null,
-};
 
 export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'index',
-    redirect: {name: 'pillars'}
+    redirect: { name: 'pillars' },
   },
   {
     path: '/pillars',
