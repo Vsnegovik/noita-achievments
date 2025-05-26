@@ -21,16 +21,14 @@ body {
     min-width: 320px;
     min-height: 100vh;
     overscroll-behavior: none;
-    background:
-            url('/src/shared/assets/storm_clouds_01.png') repeat-x,
-            linear-gradient(#ccc, transparent) no-repeat,
-            url('/src/shared/assets/storm_clouds_02.png') repeat-x,
-            url('/src/shared/assets/parallax_background.png') no-repeat center;
-    background-size:
-            auto,
-            100% 200px,
-            auto,
-            100% 100%;
+    background: url('/src/shared/assets/storm_clouds_01.png') repeat-x,
+    linear-gradient(#ccc, transparent) no-repeat,
+    url('/src/shared/assets/storm_clouds_02.png') repeat-x,
+    url('/src/shared/assets/parallax_background.png') no-repeat center;
+    background-size: auto,
+    100% 200px,
+    auto,
+    100% 100%;
     animation: running linear infinite cloudsMoving 100s
 }
 
@@ -47,4 +45,12 @@ body {
     to {
         background-position: 200% 0, 0 0, 100% 15px, center;
     }
+}
+
+.v-popper--theme-note .v-popper__inner {
+    background: #243136;
+}
+
+.v-popper--theme-note .v-popper__arrow-outer {
+    border-color: #243136;
 }
